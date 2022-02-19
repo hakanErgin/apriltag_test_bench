@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="video_stream_opencv" type="video_stream" name="vid_node" output="screen" /> 
+    <node pkg="apriltag_ros" type="apriltag_ros_continuous_node" name="detection_node" clear_params="true" output="screen" />
+
+</launch>
