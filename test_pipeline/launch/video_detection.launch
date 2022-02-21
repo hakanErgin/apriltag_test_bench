@@ -1,55 +1,10 @@
 <launch>
     <!-- video -->
-    <include file="$(find video_stream_opencv)/launch/camera.launch" >
-        <!-- node name and ros graph name -->
-        <arg name="camera_name" value="camera" />
-        <!-- full path to the video file -->
-        <!-- wget http://techslides.com/demos/sample-videos/small.mp4 -O /tmp/small.mp4 -->
-        <arg name="video_stream_provider" value="/home/uware/Downloads/test_vids/50_100_150cm_rescaled.mkv" />
-        <!-- set camera fps to (video files not affected) -->
-        <!-- <arg name="set_camera_fps" value="30"/> -->
-        <!-- set buffer queue size of frame capturing to -->
-        <arg name="buffer_queue_size" value="100" />
-        <!-- throttling the querying of frames to -->
-        <arg name="fps" value="30" />
-        <!-- setting frame_id -->
-        <arg name="frame_id" value="camera" />
-        <!-- camera info loading, take care as it needs the "file:///" at the start , e.g.:
-        "file:///$(find your_camera_package)/config/your_camera.yaml" -->
-        <arg name="camera_info_url" value="file:///home/uware/general_webcam_calibration_files_old/ost.yaml" />
-        <!-- flip the image horizontally (mirror it) -->
-        <arg name="flip_horizontal" value="false" />
-        <!-- flip the image vertically -->
-        <arg name="flip_vertical" value="false" />
-        <!-- enable looping playback -->
-        <arg name="loop_videofile" value="false" />
-        <!-- start frame of video -->
-        <arg name="start_frame" value="0"/>
-        <!-- stop frame of video, -1 means the end of video -->
-        <arg name="stop_frame" value="-1"/>
-        <!-- visualize on an image_view window the stream generated -->
-        <arg name="visualize" value="false" />
-        <arg name="width" value="800"/>
-        <arg name="height" value="480"/>
-    </include>
+    <include file="$(find video_stream_opencv)/launch/video_file.launch" />
     <!-- img_proc -->
     <node name="image_proc" pkg="image_proc" type="image_proc" ns="camera" />
     <!-- detector -->
-    <arg name="launch_prefix" default="" /> <!-- set to value="gdbserver localhost:10000" for remote debugging -->
-    <arg name="node_namespace" default="apriltag_ros_continuous_node" />
-    <arg name="camera_name" default="/camera" />
-    <arg name="image_topic" default="image_rect" />
-
-    <!-- Set parameters -->
-    <rosparam command="load" file="$(find apriltag_ros)/config/settings.yaml" ns="$(arg node_namespace)" />
-    <rosparam command="load" file="$(find apriltag_ros)/config/tags.yaml" ns="$(arg node_namespace)" />
-    
-    <node pkg="apriltag_ros" type="apriltag_ros_continuous_node" name="$(arg node_namespace)" clear_params="true" output="screen" launch-prefix="$(arg launch_prefix)" >
-        <!-- Remap topics from those used in code to those on the ROS network -->
-        <remap from="image_rect" to="$(arg camera_name)/$(arg image_topic)" />
-        <remap from="camera_info" to="$(arg camera_name)/camera_info" />
-        <param name="publish_tag_detections_image" type="bool" value="true" />      <!-- default: false -->
-    </node>
-
+    <include file="$(find apriltag_ros)/launch/continuous_detection.launch" />
+    <!-- record to bag -->
     <node pkg="rosbag" type="record" name="bag_record" args="-o /home/uware/rosbags/ /tf" required="true" />
 </launch>
