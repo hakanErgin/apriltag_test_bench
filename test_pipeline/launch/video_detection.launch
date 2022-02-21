@@ -22,7 +22,7 @@
         <!-- flip the image vertically -->
         <arg name="flip_vertical" value="false" />
         <!-- enable looping playback -->
-        <arg name="loop_videofile" value="true" />
+        <arg name="loop_videofile" value="false" />
         <!-- start frame of video -->
         <arg name="start_frame" value="0"/>
         <!-- stop frame of video, -1 means the end of video -->
@@ -50,4 +50,6 @@
         <remap from="camera_info" to="$(arg camera_name)/camera_info" />
         <param name="publish_tag_detections_image" type="bool" value="true" />      <!-- default: false -->
     </node>
+
+    <node pkg="rosbag" type="record" name="bag_record" args="-o /home/uware/rosbags/ /tf" required="true" />
 </launch>
