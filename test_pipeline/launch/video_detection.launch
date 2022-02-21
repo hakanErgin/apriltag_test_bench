@@ -6,5 +6,5 @@
     <!-- detector -->
     <include file="$(find apriltag_ros)/launch/continuous_detection.launch" />
     <!-- record to bag -->
-    <node pkg="rosbag" type="record" name="bag_record" args="-o /home/uware/rosbags/ /tf" required="true" />
+    <node pkg="rosbag" type="record" name="bag_record" args="-o /home/uware/rosbags/ /tf" output="screen" />
 </launch>
