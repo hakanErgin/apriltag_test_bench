@@ -2,10 +2,6 @@
 
 launch files combined 
 para meters are hardcoded (add this to todos)
+distance test included
 
-
-To do
-- write bag file
-- export bag file to CSV
-- plot z against time
-- get plateaus and find errors 
+wip - rotation test (yaw)
