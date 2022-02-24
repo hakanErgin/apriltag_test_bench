@@ -5,7 +5,7 @@ Provides information on the accuracy of estimations made by [Apriltag_ros](https
 
 ## How to use
 
-> Don't forget to set up apriltag_ros [config](/home/uware/projects/apriltags_ws/src/apriltag_ros/apriltag_ros/config) files according to the your tags.
+> Don't forget to set up apriltag_ros [config](apriltag_ros/apriltag_ros/config) files according to the your tags.
 
 - ### Static tests
 
