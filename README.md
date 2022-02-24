@@ -1,7 +1,9 @@
 # Apriltags testbench
 
-Provides information on the accuracy of estimations made by apriltag_ros library.
+Provides information on the accuracy of estimations made by (apriltag_ros)[https://github.com/AprilRobotics/apriltag_ros] library.
 > This repository is the content of `src` folder of a _catkin workspace_ with multiple packages. The virtual environment and the custom files are created in custom package `test_pipeline`.
+
+> Don't forget to set up [config](/home/uware/projects/apriltags_ws/src/apriltag_ros/apriltag_ros/config) files from the main repository according to your tags.
 
 ## How to use
 
