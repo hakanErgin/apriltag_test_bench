@@ -5,8 +5,6 @@ Provides information on the accuracy of estimations made by apriltag_ros library
 
 ## How to use
 
----
-
 - ### Static tests
 
 1. Create rosbags
@@ -17,7 +15,7 @@ Provides information on the accuracy of estimations made by apriltag_ros library
 
         Param | Explanation | Default/Example
         --- | --- | --- 
-        `camera_info_url` | Camera calibration file | file:///home/uware/general_webcam_calibration_files/ost.yaml
+        `camera_info_url` | Camera calibration file | file:///home/uware/calibration_files/ost.yaml
         `video_stream_provider` | Video file location | /home/user/test_vids/some_file.mkv
         `width/height` | Resolution | 800/480
         `fps` | Fps | 30
