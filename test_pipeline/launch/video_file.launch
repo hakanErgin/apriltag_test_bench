@@ -14,7 +14,7 @@
         "file:///$(find your_camera_package)/config/your_camera.yaml" -->
         <arg name="camera_info_url" value="file:///home/uware/general_webcam_calibration_files/ost.yaml" />
         <!-- enable looping playback -->
-        <arg name="loop_videofile" value="true" />
+        <arg name="loop_videofile" value="false" />
         <!-- visualize on an image_view window the stream generated -->
         <arg name="visualize" value="false" />
         <!-- set to video res -->
