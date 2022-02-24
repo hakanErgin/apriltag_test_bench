@@ -1,11 +1,11 @@
 # Apriltags testbench
 
-Provides information on the accuracy of estimations made by [apriltag_ros](https://github.com/AprilRobotics/apriltag_ros) library.
+Provides information on the accuracy of estimations made by [Apriltag_ros](https://github.com/AprilRobotics/apriltag_ros) library.
 > This repository is the content of `src` folder of a _catkin workspace_ with multiple packages. The virtual environment and the custom files are created in custom package `test_pipeline`.
 
-> Don't forget to set up [config](/home/uware/projects/apriltags_ws/src/apriltag_ros/apriltag_ros/config) files according to the main repository for your tags.
-
 ## How to use
+
+> Don't forget to set up apriltag_ros [config](/home/uware/projects/apriltags_ws/src/apriltag_ros/apriltag_ros/config) files according to the your tags.
 
 - ### Static tests
 
@@ -22,15 +22,17 @@ Provides information on the accuracy of estimations made by [apriltag_ros](https
         `width/height` | Resolution | 800/480
         `fps` | Fps | 30
 
-        > make sure the Camera calibration file has matching `camera_name` (change to 'camera') and `resolution`
+        > make sure the Camera calibration file has matching `camera_name` (or just change to 'camera') and `resolution`
     
     3. Run `roslaunch test_pipeline video_detection.launch`. Transformation messages published by the topic `/tf` will be recorded in rosbag under `/home/uware/rosbags/` by default. This can be changed by editing [the launch file](test_pipeline/launch/video_detection.launch)
+
+        > If you see an error about the camera topics `/camera_info` and `/camera_rect`, it means the nodes didn't start in proper order, just rerun the command above.
 
     4. `Ctrl-C` to stop the process when receiving message `Reached the end of frames`.
 
 2. Visualise results
     
-    1. From `rotations` or `translations` folder from [test_pipeline/scripts](test_pipeline/scripts) use the notebook that suites your needs.
+    1. From `rotations` or `translations` folder in [test_pipeline/scripts](test_pipeline/scripts) use the notebook that suites your needs.
 
     2. Edit the second cell of the notebook for following inputs:
         
