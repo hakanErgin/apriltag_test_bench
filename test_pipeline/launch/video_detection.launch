@@ -1,0 +1,10 @@
+<launch>
+    <!-- video -->
+    <include file="$(find video_stream_opencv)/launch/video_file.launch" />
+    <!-- img_proc -->
+    <node name="image_proc" pkg="image_proc" type="image_proc" ns="camera" />
+    <!-- detector -->
+    <include file="$(find apriltag_ros)/launch/continuous_detection.launch" />
+    <!-- record to bag -->
+    <node pkg="rosbag" type="record" name="bag_record" args="-o /home/uware/rosbags/ /tf" output="screen" />
+</launch>
