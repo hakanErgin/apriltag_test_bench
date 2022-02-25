@@ -1,0 +1,5 @@
+tests will be different than static ones
+video:
+    tag will rotate (in rpy) in a measured manner
+    ex. for 10 seconds, at 1°/s
+    is it detected at all frames?
