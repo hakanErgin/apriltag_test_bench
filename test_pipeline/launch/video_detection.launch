@@ -6,8 +6,8 @@
     <!-- detector -->
     <include file="$(find apriltag_ros)/launch/continuous_detection.launch" />
     <!-- record to bag : tf or tag_detections topics-->
-    <arg name="file_name" default="test" />
-    <node pkg="rosbag" type="record" name="bag_record" args="-o /home/uware/rosbags/$(arg file_name) /tag_detections" output="screen" >
-        <param name="file_name" type="string" value="$(arg file_name)" />
+    <arg name="bag_name" default="" />
+    <node pkg="rosbag" type="record" name="bag_record" args="-o /home/uware/rosbags/$(arg bag_name) /tag_detections" output="screen" >
+        <param name="bag_name" type="string" value="$(arg bag_name)" />
     </node>
 </launch>
