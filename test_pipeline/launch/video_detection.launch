@@ -5,6 +5,9 @@
     <node name="image_proc" pkg="image_proc" type="image_proc" ns="camera" />
     <!-- detector -->
     <include file="$(find apriltag_ros)/launch/continuous_detection.launch" />
-    <!-- record to bag -->
-    <node pkg="rosbag" type="record" name="bag_record" args="-o /home/uware/rosbags/ /tf" output="screen" />
+    <!-- record to bag : tf or tag_detections topics-->
+    <arg name="file_name" default="test" />
+    <node pkg="rosbag" type="record" name="bag_record" args="-o /home/uware/rosbags/$(arg file_name) /tag_detections" output="screen" >
+        <param name="file_name" type="string" value="$(arg file_name)" />
+    </node>
 </launch>
