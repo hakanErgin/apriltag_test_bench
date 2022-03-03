@@ -40,17 +40,19 @@ from camera_calibration.camera_calibrator import OpenCVCalibrationNode
 from camera_calibration.calibrator import ChessboardInfo, Patterns
 from message_filters import ApproximateTimeSynchronizer
 
+
 def optionsValidCharuco(options, parser):
     """
     Validates the provided options when the pattern type is 'charuco'
     """
-    if options.pattern != 'charuco': return False
+    if options.pattern != 'charuco':
+        return False
 
     n_boards = len(options.size)
     if (n_boards != len(options.square) or n_boards != len(options.charuco_marker_size) or n_boards !=
             len(options.aruco_dict)):
         parser.error("When using ChArUco boards, --size, --square, --charuco_marker_size, and --aruco_dict " +
-        "must be specified for each board")
+                     "must be specified for each board")
         return False
 
     # TODO: check for fisheye and stereo (not implemented with ChArUco)
@@ -62,8 +64,8 @@ def main():
     parser = OptionParser("%prog --size SIZE1 --square SQUARE1 [ --size SIZE2 --square SQUARE2 ]",
                           description=None)
     parser.add_option("-c", "--camera_name",
-                     type="string", default='narrow_stereo',
-                     help="name of the camera to appear in the calibration file")
+                      type="string", default='camera',
+                      help="name of the camera to appear in the calibration file")
     group = OptionGroup(parser, "Chessboard Options",
                         "You must specify one or more chessboards as pairs of --size and --square options.")
     group.add_option("-p", "--pattern",
@@ -148,16 +150,19 @@ def main():
     if options.pattern == "charuco" and optionsValidCharuco(options, parser):
         for (sz, sq, ms, ad) in zip(options.size, options.square, options.charuco_marker_size, options.aruco_dict):
             size = tuple([int(c) for c in sz.split('x')])
-            boards.append(ChessboardInfo('charuco', size[0], size[1], float(sq), float(ms), ad))
+            boards.append(ChessboardInfo(
+                'charuco', size[0], size[1], float(sq), float(ms), ad))
     else:
         for (sz, sq) in zip(options.size, options.square):
             size = tuple([int(c) for c in sz.split('x')])
-            boards.append(ChessboardInfo(options.pattern, size[0], size[1], float(sq)))
+            boards.append(ChessboardInfo(
+                options.pattern, size[0], size[1], float(sq)))
 
     if options.approximate == 0.0:
         sync = message_filters.TimeSynchronizer
     else:
-        sync = functools.partial(ApproximateTimeSynchronizer, slop=options.approximate)
+        sync = functools.partial(
+            ApproximateTimeSynchronizer, slop=options.approximate)
 
     # Pinhole opencv calibration options parsing
     num_ks = options.k_coefficients
@@ -212,7 +217,8 @@ def main():
     elif options.pattern == 'charuco':
         pattern = Patterns.ChArUco
     elif options.pattern != 'chessboard':
-        print('Unrecognized pattern %s, defaulting to chessboard' % options.pattern)
+        print('Unrecognized pattern %s, defaulting to chessboard' %
+              options.pattern)
 
     if options.disable_calib_cb_fast_check:
         checkerboard_flags = 0
@@ -224,6 +230,7 @@ def main():
                                  checkerboard_flags=checkerboard_flags, max_chessboard_speed=options.max_chessboard_speed,
                                  queue_size=options.queue_size)
     rospy.spin()
+
 
 if __name__ == "__main__":
     try:
