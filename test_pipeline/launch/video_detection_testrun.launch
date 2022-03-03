@@ -1,0 +1,8 @@
+<launch>
+    <!-- video -->
+    <include file="$(find test_pipeline)/launch/video_file_loop.launch" />
+    <!-- img_proc publishes img_rect -->
+    <node name="image_proc" pkg="image_proc" type="image_proc" ns="camera" />
+    <!-- detector -->
+    <include file="$(find apriltag_ros)/launch/continuous_detection.launch" />
+</launch>
