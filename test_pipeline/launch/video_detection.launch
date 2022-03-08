@@ -1,13 +1,18 @@
 <launch>
     <!-- video -->
-    <include file="$(find test_pipeline)/launch/video_file.launch" />
+    <include file="$(find test_pipeline)/launch/video_file_$(arg res).launch" >
+        <param name="res" value="$(arg res)" />
+    </include>
     <!-- img_proc publishes img_rect -->
-    <node name="image_proc" pkg="image_proc" type="image_proc" ns="camera" />
+    <node name="image_proc" pkg="image_proc" type="image_proc" ns="camera" >
+        <!-- <param name="queue_size" type="int" value="10" /> -->
+        <!-- <param name="approximate_sync" value="true" /> -->
+    </node>
     <!-- detector -->
     <include file="$(find apriltag_ros)/launch/continuous_detection.launch" />
     <!-- record to bag : tf or tag_detections topics-->
     <arg name="bag_name" default="" />
-    <node pkg="rosbag" type="record" name="bag_record" args="-o /home/uware/rosbags/$(arg bag_name) /tf /tag_detections" output="screen" >
+    <node pkg="rosbag" type="record" name="bag_record" args="-O /home/uware/rosbags/$(arg bag_name) /tf /tag_detections" output="screen" >
         <param name="bag_name" type="string" value="$(arg bag_name)" />
     </node>
 </launch>
