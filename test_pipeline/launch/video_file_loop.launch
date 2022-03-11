@@ -5,20 +5,20 @@
         <!-- node name and ros graph name -->
         <arg name="camera_name" value="camera" />
         <!-- full path to the video file -->
-        <arg name="video_stream_provider" value="/home/uware/Downloads/test_vids/dynamic/linear/slow_200_cut.mp4" />
+        <arg name="video_stream_provider" value="/home/uware/Downloads/test_vids/static/rotation/21h7/s_yaw_21h7_5m.mp4" />
         <!-- set buffer queue size of frame capturing to -->
-        <arg name="buffer_queue_size" value="100" />
+        <arg name="buffer_queue_size" value="1" />
         <!-- throttling the querying of frames to -->
-        <arg name="fps" value="30" />
+        <arg name="fps" value="15" />
         <!-- camera info loading, take care as it needs the "file:///" at the start , e.g.:
         "file:///$(find your_camera_package)/config/your_camera.yaml" -->
-        <arg name="camera_info_url" value="file:///home/uware/general_webcam_calibration_files/ost.yaml" />
+        <arg name="camera_info_url" value="file:///home/uware/calibration_files/1080/ost.yaml" />
         <!-- enable looping playback -->
         <arg name="loop_videofile" value="true" />
         <!-- visualize on an image_view window the stream generated -->
         <arg name="visualize" value="false" />
         <!-- set to video res -->
-        <arg name="width" value="800"/>
-        <arg name="height" value="480"/>
+        <arg name="width" value="1920"/>
+        <arg name="height" value="1080"/>
    </include>
 </launch>

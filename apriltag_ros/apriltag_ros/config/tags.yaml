@@ -1,5 +1,12 @@
-# a4 paper tags 163 inner, 204 outer
-# id 0 on pdf - 0.0445
+# tag36h11 id 0 on pdf - 0.0445
+#   [{ id: 0, size: 0.0445 }, { id: 1, size: 0.163 }, { id: 2, size: 0.163 }]
+# tag16h5
+#   [{ id: 0, size: 0.161 }]
+# tag25h9
+#   [{ id: 1, size: 0.167 }]
+# tag 21h7
+#   [{ id: 0, size: 0.091 }]
+
 standalone_tags:
-  [{ id: 0, size: 0.0445 }, { id: 1, size: 0.163 }, { id: 2, size: 0.163 }]
+  [{ id: 0, size: 0.161 }]
 tag_bundles: []
