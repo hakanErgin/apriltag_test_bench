@@ -4,10 +4,7 @@
         <param name="res" value="$(arg res)" />
     </include>
     <!-- img_proc publishes img_rect -->
-    <node name="image_proc" pkg="image_proc" type="image_proc" ns="camera" >
-        <!-- <param name="queue_size" type="int" value="10" /> -->
-        <!-- <param name="approximate_sync" value="true" /> -->
-    </node>
+    <node name="image_proc" pkg="image_proc" type="image_proc" ns="camera" />
     <!-- detector -->
     <include file="$(find apriltag_ros)/launch/continuous_detection.launch" />
     <!-- record to bag : tf or tag_detections topics-->
