@@ -1,12 +1,27 @@
-# tag36h11 id 0 on pdf - 0.0445
-#   [{ id: 0, size: 0.0445 }, { id: 1, size: 0.163 }, { id: 2, size: 0.163 }]
-# tag16h5
-#   [{ id: 0, size: 0.161 }]
-# tag25h9
-#   [{ id: 1, size: 0.167 }]
-# tag 21h7
-#   [{ id: 0, size: 0.091 }]
-
 standalone_tags:
-  [{ id: 0, size: 0.161 }]
+  [{ id: 1, size: 0.08 }]
 tag_bundles: []
+
+# tag36h11 id 0 on phone - 0.0445
+# big
+#   [{ id: 1, size: 0.163 }, { id: 2, size: 0.163 }]
+# small
+#   [{ id: 1, size: 0.08 }]
+
+# tag16h5
+# big
+#   [{ id: 0, size: 0.161 }]
+# small
+#   [{ id: 0, size: 0.075 }]
+
+# tag25h9
+# big
+#   [{ id: 1, size: 0.167 }]
+# small
+#   [{ id: 1, size: 0.073 }]
+
+# tag 21h7
+# big
+#   [{ id: 0, size: 0.091 }]
+# small
+#   [{ id: 0, size: 0.161 }]
