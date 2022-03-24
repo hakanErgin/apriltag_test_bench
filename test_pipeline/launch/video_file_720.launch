@@ -5,7 +5,7 @@
         <!-- node name and ros graph name -->
         <arg name="camera_name" value="camera" />
         <!-- full path to the video file -->
-        <arg name="video_stream_provider" value="/home/uware/Downloads/test_vids/static/16h5/sl_z_2-4-6-8-10_720p.mkv" />
+        <arg name="video_stream_provider" value="/home/uware/Downloads/test_vids/dynamic/linear/2_5m/720/16h5_720.mp4" />
         <!-- set buffer queue size of frame capturing to -->
         <arg name="buffer_queue_size" value="1" />
         <!-- throttling the querying of frames to -->
@@ -14,7 +14,7 @@
         "file:///$(find your_camera_package)/config/your_camera.yaml" -->
         <arg name="camera_info_url" value="file:///home/uware/calibration_files/720/ost.yaml" />
         <!-- enable looping playback -->
-        <arg name="loop_videofile" value="false" />
+        <arg name="loop_videofile" value="true" />
         <!-- visualize on an image_view window the stream generated -->
         <arg name="visualize" value="false" />
         <!-- set to video res -->
