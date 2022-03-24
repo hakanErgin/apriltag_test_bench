@@ -1,1 +1,3 @@
 test_pipeline/env/
+env/
+analysis/__pycache__/
