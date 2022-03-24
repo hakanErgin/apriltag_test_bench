@@ -20,7 +20,7 @@ def display_category(paths, notebooks_type):
                 nb_cells, notebooks_type, nb_path
             )
             display(HTML(nb_name))
-            display(HTML(detection_ratios))
+            display(HTML(detection_ratios[:-34]))
             display_png(error_plot, raw=True)
 
 
