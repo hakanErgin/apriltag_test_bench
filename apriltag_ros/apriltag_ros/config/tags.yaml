@@ -1,5 +1,5 @@
 standalone_tags:
-  [{ id: 1, size: 0.08 }]
+  [{ id: 1, size: 0.073 }]
 tag_bundles: []
 
 # tag36h11 id 0 on phone - 0.0445
@@ -24,4 +24,4 @@ tag_bundles: []
 # big
 #   [{ id: 0, size: 0.091 }]
 # small
-#   [{ id: 0, size: 0.161 }]
+#   [{ id: 0, size: 0.051 }]

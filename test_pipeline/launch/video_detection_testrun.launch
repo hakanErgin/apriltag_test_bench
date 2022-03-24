@@ -1,5 +1,6 @@
 <launch>
     <!-- video -->
+    <arg name="res" default="1080" />
     <include file="$(find test_pipeline)/launch/video_file_$(arg res).launch" >
         <param name="res" value="$(arg res)" />
     </include>
