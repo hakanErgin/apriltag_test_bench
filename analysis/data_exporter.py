@@ -63,3 +63,9 @@ def get_nb_name(nb_path, notebooks_type):
         dist = dist.split("/")[-1]
         tag = nb_path.split("_")[-2]
         return str(tag + " - " + dist + " - " + res)
+
+    elif notebooks_type == "angular_velocity":
+        axis = nb_path.split("/")[-3]
+        dist = nb_path.split("/")[-2]
+        tag = nb_path.split("/")[-1].split(".")[0]
+        return str(axis + " - " + tag + " - " + dist)
