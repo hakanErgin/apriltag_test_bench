@@ -11,4 +11,18 @@ def export_data(nb):
         if cell.source == "box_plotter('error')":
             error_plot = cell.outputs[0].data["image/png"]
 
-    return (display(error_description), display_png(error_plot, raw=True))
+    return (error_description, error_plot)
+
+
+def get_nb_name(nb, notebooks_type):
+
+    if notebooks_type == "translations":
+        res = nb.split("_")[-2]
+        tag = nb.split("_")[-6].split("/")[-1]
+        return str(tag + " - " + res)
+
+    elif notebooks_type == "rotations":
+        res = nb.split("_")[-2]
+        dist = nb.split("_")[-3]
+        tag = nb.split("_")[-4]
+        return str(tag + " - " + dist + " - " + res)
