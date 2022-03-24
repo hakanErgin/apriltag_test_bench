@@ -34,7 +34,6 @@ diagnostic-common-diagnostics==1.11.0
 diagnostic-updater==1.11.0
 distro==1.7.0
 docutils==0.17.1
-dynamic-reconfigure==1.7.1
 entrypoints==0.4
 executing==0.8.2
 fonttools==4.29.1
@@ -59,9 +58,6 @@ ipython==8.0.1
 ipython-genutils==0.2.0
 ipywidgets==7.6.5
 jedi==0.18.1
-Jinja2==3.0.3
-joint_state_publisher==1.15.0
-joint_state_publisher_gui==1.15.0
 jsonschema==4.4.0
 jupyter==1.0.0
 jupyter-client==7.1.2
