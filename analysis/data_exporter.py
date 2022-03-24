@@ -1,4 +1,4 @@
-from IPython.display import display, display_png, HTML, Image
+from IPython.display import display, display_png, HTML
 import nbformat
 
 
@@ -9,16 +9,19 @@ def display_category(paths, notebooks_type):
             error_description, error_plot, nb_name = export_data(
                 nb_cells, notebooks_type, nb_path
             )
-            display(nb_name)
+            display(HTML(nb_name))
             display(error_description)
             display_png(error_plot, raw=True)
 
     if notebooks_type == "linear_velocity" or notebooks_type == "angular_velocity":
         for nb_path in paths[notebooks_type]:
             nb_cells = nbformat.read(nb_path, as_version=4)
-            detection_ratios, nb_name = export_data(nb_cells, notebooks_type, nb_path)
-            display(nb_name)
-            print(detection_ratios)
+            detection_ratios, error_plot, nb_name = export_data(
+                nb_cells, notebooks_type, nb_path
+            )
+            display(HTML(nb_name))
+            display(HTML(detection_ratios))
+            display_png(error_plot, raw=True)
 
 
 def export_data(nb, notebooks_type, nb_path):
@@ -39,9 +42,10 @@ def export_data(nb, notebooks_type, nb_path):
                 cell.source
                 == "# ratio of detected to not\nratios = df.is_detected.value_counts(normalize=True)*100\nratios"
             ):
-                return cell.outputs[0].data["text/plain"], get_nb_name(
-                    nb_path, notebooks_type
-                )
+                error_description = cell.outputs[0].data["text/plain"]
+            if cell.source == "ratios.plot.pie()\nplt.legend()":
+                error_plot = cell.outputs[1].data["image/png"]
+        return (error_description, error_plot, get_nb_name(nb_path, notebooks_type))
 
 
 def get_nb_name(nb_path, notebooks_type):
