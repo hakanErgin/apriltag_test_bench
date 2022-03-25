@@ -3,8 +3,25 @@ from IPython.display import display, display_png, HTML
 import nbformat
 
 
+def get_category(paths, notebooks_type):
+
+    category = []
+
+    if notebooks_type == "translations" or notebooks_type == "rotations":
+        for nb_path in paths[notebooks_type]:
+            nb_cells = nbformat.read(nb_path, as_version=4)
+            error_description, error_plot, nb_name = export_data(
+                nb_cells, notebooks_type, nb_path
+            )
+
+            table = {"name": nb_name, "error_table": error_description}
+
+            category.append(table)
+
+    return category
+
+
 def display_category(paths, notebooks_type):
-    err = []
     if notebooks_type == "translations" or notebooks_type == "rotations":
         for nb_path in paths[notebooks_type]:
             nb_cells = nbformat.read(nb_path, as_version=4)
@@ -14,7 +31,6 @@ def display_category(paths, notebooks_type):
             display(HTML(nb_name))
             display(HTML(error_description))
             display_png(error_plot, raw=True)
-            err.append(error_description)
 
     if notebooks_type == "linear_velocity" or notebooks_type == "angular_velocity":
         for nb_path in paths[notebooks_type]:
@@ -25,8 +41,6 @@ def display_category(paths, notebooks_type):
             display(HTML(nb_name))
             display(HTML(detection_ratios[:-34]))
             display_png(error_plot, raw=True)
-
-    return err
 
 
 def export_data(nb, notebooks_type, nb_path):
