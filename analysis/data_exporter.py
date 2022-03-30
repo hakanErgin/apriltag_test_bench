@@ -1,29 +1,3 @@
-from IPython.display import display, display_png, HTML
-import nbformat
-
-
-def display_category(paths, notebooks_type):
-    if notebooks_type == "translations" or notebooks_type == "rotations":
-        for nb_path in paths[notebooks_type]:
-            nb_cells = nbformat.read(nb_path, as_version=4)
-            error_description, error_plot, nb_name = export_data(
-                nb_cells, notebooks_type, nb_path
-            )
-            display(HTML(nb_name))
-            display(error_description)
-            display_png(error_plot, raw=True)
-
-    if notebooks_type == "linear_velocity" or notebooks_type == "angular_velocity":
-        for nb_path in paths[notebooks_type]:
-            nb_cells = nbformat.read(nb_path, as_version=4)
-            detection_ratios, error_plot, nb_name = export_data(
-                nb_cells, notebooks_type, nb_path
-            )
-            display(HTML(nb_name))
-            display(HTML(detection_ratios[:-34]))
-            display_png(error_plot, raw=True)
-
-
 def export_data(nb, notebooks_type, nb_path):
     error_description = None
     error_plot = None
@@ -31,7 +5,7 @@ def export_data(nb, notebooks_type, nb_path):
     if notebooks_type == "translations" or notebooks_type == "rotations":
         for cell in nb.cells:
             if cell.source == "grouped_df.error.describe()":
-                error_description = HTML(cell.outputs[0].data["text/html"])
+                error_description = cell.outputs[0].data["text/html"]
             if cell.source == "box_plotter('error')":
                 error_plot = cell.outputs[0].data["image/png"]
         return (error_description, error_plot, get_nb_name(nb_path, notebooks_type))
