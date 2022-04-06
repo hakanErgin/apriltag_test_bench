@@ -1,5 +1,12 @@
 # Apriltags testbench
 
+## Results
+
+All tests results can be found [here](https://github.com/hakanErgin/apriltag_test_bench/blob/main/analysis/analysis.ipynb)
+Rotational tests can be found [here](https://github.com/hakanErgin/apriltag_test_bench/blob/main/analysis/cumulative_rotations.ipynb)
+Distance test results can be found [here](https://github.com/hakanErgin/apriltag_test_bench/blob/main/analysis/cumulative_translations.ipynb)
+
+
 Provides information on the accuracy of estimations made by [Apriltag_ros](https://github.com/AprilRobotics/apriltag_ros) library.
 > This repository is the content of `src` folder of a _catkin workspace_ with multiple packages. The virtual environment and the custom files are created in custom package `test_pipeline`.
 
